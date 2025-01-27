@@ -36,12 +36,20 @@ class ChildApp extends StatelessWidget {
         //     style: TextStyle(fontSize: 24),
         //   ),
         // ),
-        body: Row(
+        // body: Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: <Widget>[
+        //     Text('Hey'),
+        //     Text('This is text inside row'),
+        //   ],
+        // ));
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              child: Text('This is text inside row'),
-            )
+            Center(
+              child: Text('Hey'),
+            ),
+            Text('This is text inside row'),
           ],
         ));
   }

@@ -22,118 +22,132 @@ class ChildApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var width = size.width;
     return Scaffold(
-      backgroundColor: Colors.redAccent,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         // backgroundColor: Colors.transparent,
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.lightBlue,
         title: const Text('This is First App'),
       ),
-      // body: Container(
-      //   alignment: AlignmentDirectional.center,
-      //   child: Text(
-      //     'This is the body of my first app',
-      //     style: TextStyle(fontSize: 24),
-      //   ),
-      // ),
-      // body: Row(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: <Widget>[
-      //     Text('Hey'),
-      //     Text('This is text inside row'),
-      //   ],
-      // ),
-      // body: Column(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: <Widget>[
-      //     Center(
-      //       child: Text('Hey'),
-      //     ),
-      //     Text('This is text inside row'),
-      //   ],
-      // ),
-      // body: Center(
-      //     child: Column(
-      //   children: <Widget>[
-      //     Container(
-      //       color: Colors.blue,
-      //       height: 100,
-      //       child: Center(
-      //         child: Text(
-      //           'First widget',
-      //           style: TextStyle(
-      //             color: Colors.white,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Expanded(
-      //       child: Container(
-      //         color: Colors.amber,
-      //         // width: 200,
-      //         child: Center(
-      //           child: Text(
-      //             'Second widget',
-      //             style: TextStyle(
-      //               color: Colors.white,
-      //             ),
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Container(
-      //       color: Colors.orange,
-      //       height: 100,
-      //       child: Center(
-      //         child: Text(
-      //           'Third widget',
-      //           style: TextStyle(
-      //             color: Colors.white,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // )),
-      //   body: Center(
-      //       child: SizedBox(
-      //     width: 200.0,
-      //     height: 300.0,
-      //     child: Card(
-      //         color: Colors.cyan,
-      //         child: Center(
-      //           child: Text(
-      //             'Hello this is Sizebox',
-      //             style: TextStyle(fontSize: 24),
-      //             textAlign: TextAlign.center,
-      //           ),
-      //         )),
-      //   )),
-      body: Stack(
-        children: <Widget>[
-          Center(
-            child: Container(
-              width: 200,
-              height: 200,
-              color: Colors.amber,
+      body: Column(children: <Widget>[
+        Image.asset(
+          'assets/images/lakeImg.jpg',
+        ),
+        Row(children: <Widget>[
+          Container(
+            height: 100,
+            width: 2 * width / 3,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  padding: EdgeInsets.only(left: 8, top: 20),
+                  // alignment: Alignment.center,
+                  child: Text(
+                    'Oeschinen Lake Campground',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                  height: 50,
+                  padding: EdgeInsets.only(left: 8),
+                  child: Text(
+                    'Kendersteg, Switzerland',
+                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                  ),
+                ),
+              ],
             ),
           ),
-          Center(
-            child: Container(
-              width: 160,
-              height: 160,
-              color: Colors.blue,
-            ),
+          Container(
+              // color: Colors.lightBlue,
+              width: width / 3,
+              height: 100,
+              padding: EdgeInsets.only(right: 25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Icon(
+                    Icons.star,
+                    color: Colors.red,
+                    size: 28.0,
+                    semanticLabel: 'Text to announce in accessibility modes',
+                  ),
+                  Text(
+                    '41',
+                    style: TextStyle(fontSize: 20, color: Colors.black),
+                  )
+                ],
+              )),
+        ]),
+        Container(
+          padding: EdgeInsets.only(left: 15, right: 15),
+          height: 100,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(
+                    Icons.call,
+                    color: Colors.blue,
+                    size: 28.0,
+                    semanticLabel: 'Text to announce in accessibility modes',
+                  ),
+                  Text(
+                    'Call',
+                    style: TextStyle(fontSize: 20, color: Colors.black),
+                  )
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(
+                    Icons.navigation,
+                    color: Colors.blue,
+                    size: 28.0,
+                    semanticLabel: 'Text to announce in accessibility modes',
+                  ),
+                  Text(
+                    'Route',
+                    style: TextStyle(fontSize: 20, color: Colors.black),
+                  )
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(
+                    Icons.share,
+                    color: Colors.blue,
+                    size: 28.0,
+                    semanticLabel: 'Text to announce in accessibility modes',
+                  ),
+                  Text(
+                    'Share',
+                    style: TextStyle(fontSize: 20, color: Colors.black),
+                  )
+                ],
+              ),
+            ],
           ),
-          Center(
-            child: Container(
-              width: 120,
-              height: 120,
-              color: Colors.red,
-            ),
+        ),
+        Container(
+          padding: EdgeInsets.only(left: 8, right: 8),
+          child: Text(
+            'Lake Oeschinen lies at the foot of the Bluemlisalp in the Bernes Alps. Situated 1,578 meters above the sea level, it is one of the larger Alpine lakes. A gondola ride from Kandersteg, followed by a half-hour walk through pastures and pine forest, leads you to the lake, which warms to 20 degree celcius in the summer. Activities enjoyed here include rowing, and riding the summer toboggan run.',
+            style: TextStyle(color: Colors.black),
           ),
-        ],
-      ),
+        )
+      ]),
     );
   }
 }

@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme:
           ThemeData(brightness: Brightness.light, primaryColor: Colors.black),
-      home: const CommentSection(),
+      home: const ChildApp(),
     );
   }
 }
@@ -149,6 +149,17 @@ class ChildApp extends StatelessWidget {
             style: TextStyle(color: Colors.black),
           ),
         ),
+        Padding(
+          padding: EdgeInsets.all(10),
+          child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CommentSection()));
+              },
+              child: Text('Activity page')),
+        )
       ]),
     );
   }

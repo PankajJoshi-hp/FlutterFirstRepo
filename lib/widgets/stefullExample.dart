@@ -57,7 +57,15 @@ class _UpdateState extends State<UpdateState> {
               style: TextStyle(fontSize: 18),
             )
           ],
-        ))
+        )),
+        Padding(
+          padding: EdgeInsets.all(10),
+          child: ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Back to previous')),
+        )
       ],
     ));
   }

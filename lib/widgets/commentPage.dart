@@ -1,3 +1,4 @@
+import 'package:first_flutter_project/widgets/stefullExample.dart';
 import 'package:flutter/material.dart';
 
 class CommentSection extends StatefulWidget {
@@ -106,6 +107,28 @@ class _CommentSectionState extends State<CommentSection> {
                       style: TextStyle(fontSize: 22, color: Colors.white),
                     ),
                   ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      spacing: 10,
+                      children: <Widget>[
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const UpdateState()));
+                            },
+                            child: Text('Update page Route')),
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text('Home Page'))
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),

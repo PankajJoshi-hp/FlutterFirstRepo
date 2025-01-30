@@ -8,6 +8,21 @@ class CommentSection extends StatefulWidget {
 }
 
 class _CommentSectionState extends State<CommentSection> {
+  late String title;
+  String text = 'Comments will be displayed here';
+  List<String> commentList = [];
+  final TextEditingController _textEditingController = TextEditingController();
+
+  void _setText() {
+    String newText = _textEditingController.text.trim();
+    if (newText.isNotEmpty) {
+      setState(() {
+        commentList.add(newText);
+        _textEditingController.clear();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,35 +44,72 @@ class _CommentSectionState extends State<CommentSection> {
           ),
           Padding(
             padding: EdgeInsets.only(left: 10),
-            child: Text(
-              'User Comments on Post',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'User Comments on Post',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 200,
+                  child: ListView(
+                    children: commentList
+                        .map((item) => Text(
+                              item,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 16),
+                            ))
+                        .toList(),
+                  ),
+                ),
+              ],
             ),
           ),
           Expanded(
+            child: Container(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              margin: EdgeInsets.only(bottom: 40),
               child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              TextField(
-                decoration: InputDecoration(
-                    label: Text('data'), enabledBorder: OutlineInputBorder()),
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  TextFormField(
+                    maxLines: 3,
+                    decoration: InputDecoration(
+                      label: Text('Enter your comment here'),
+                      labelStyle: TextStyle(color: Colors.lightBlue),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              color: Colors.lightBlue, width: 2),
+                          borderRadius: BorderRadius.circular(5)),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              color: Colors.lightBlue, width: 2),
+                          borderRadius: BorderRadius.circular(5)),
+                    ),
+                    onChanged: (value) => title = value,
+                    controller: _textEditingController,
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            WidgetStatePropertyAll(Colors.lightBlue),
+                        shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)))),
+                    onPressed: _setText,
+                    child: Text(
+                      'SUBMIT',
+                      style: TextStyle(fontSize: 22, color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
-              ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor: WidgetStatePropertyAll(Colors.lightBlue),
-                      shape: WidgetStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)))),
-                  onPressed: () {},
-                  child: Text(
-                    'SUBMIT',
-                    style: TextStyle(fontSize: 22, color: Colors.white),
-                  )),
-            ],
-          )),
+            ),
+          ),
         ],
       ),
     );

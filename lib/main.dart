@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme:
-          ThemeData(brightness: Brightness.dark, primaryColor: Colors.blueGrey),
+          ThemeData(brightness: Brightness.light, primaryColor: Colors.black),
       home: const CommentSection(),
     );
   }

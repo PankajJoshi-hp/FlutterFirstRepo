@@ -1,4 +1,6 @@
+import 'package:first_flutter_project/widgets/commentPage.dart';
 import 'package:flutter/material.dart';
+import 'widgets/stefullExample.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme:
-          ThemeData(brightness: Brightness.dark, primaryColor: Colors.blueGrey),
+          ThemeData(brightness: Brightness.light, primaryColor: Colors.black),
       home: const ChildApp(),
     );
   }
@@ -37,7 +39,7 @@ class ChildApp extends StatelessWidget {
         ),
         Row(children: <Widget>[
           Container(
-            height: 100,
+            // height: 100,
             width: 2 * width / 3,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,7 +90,7 @@ class ChildApp extends StatelessWidget {
         ]),
         Container(
           padding: EdgeInsets.only(left: 15, right: 15),
-          height: 100,
+          // height: 100,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
@@ -146,6 +148,17 @@ class ChildApp extends StatelessWidget {
             'Lake Oeschinen lies at the foot of the Bluemlisalp in the Bernes Alps. Situated 1,578 meters above the sea level, it is one of the larger Alpine lakes. A gondola ride from Kandersteg, followed by a half-hour walk through pastures and pine forest, leads you to the lake, which warms to 20 degree celcius in the summer. Activities enjoyed here include rowing, and riding the summer toboggan run.',
             style: TextStyle(color: Colors.black),
           ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(10),
+          child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CommentSection()));
+              },
+              child: Text('Activity page')),
         )
       ]),
     );
